@@ -236,12 +236,15 @@
 
 <script>
 import { defineComponent, ref, reactive, toRefs } from "vue";
+import { useRouter } from "vue-router";
+import { message } from 'ant-design-vue';
 import { useMenu } from "../../../stores/use-menu.js";
 
 export default defineComponent({
   setup() {
     useMenu().onSelectedKeys(["admin-users"]);
 
+    const router = useRouter();
     const users_status = ref([]);
     const departments = ref([]);
     const users = reactive({
@@ -274,10 +277,12 @@ export default defineComponent({
     const createUsers = () => {
       axios.post("http://127.0.0.1:8000/api/users", users)
       .then((response) => {
-        console.log(response);
+        if(response) {
+          message.success("Tạo mới thành công!");
+          router.push({name: "admin-users"});
+        }
       })
       .catch((error) => {
-        console.log(error);
         errors.value = error.response.data.errors;
       });
     }
