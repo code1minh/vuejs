@@ -5,6 +5,7 @@ import axios from 'axios'
 window.axios = axios;
 
 import {
+    Checkbox,
     Input,
     Select,
     Avatar,
@@ -40,6 +41,7 @@ const app = createApp(App);
 
 app.use(createPinia());
 app.use(router);
+app.use(Checkbox);
 app.use(Input);
 app.use(Select);
 app.use(Avatar);

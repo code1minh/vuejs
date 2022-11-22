@@ -14,6 +14,11 @@ const admin = [
                 name: "admin-users-create",
                 component: () => import ("../pages/admin/users/create.vue")
             },
+            {
+                path: "users/:id/edit",
+                name: "admin-users-edit",
+                component: () => import ("../pages/admin/users/edit.vue")
+            },
 
             // Quản lý Roles
             {
