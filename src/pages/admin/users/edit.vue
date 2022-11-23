@@ -26,9 +26,11 @@
             <div class="col-12 col-sm-3 text-start text-sm-end">
               <label>
                 <span class="text-danger me-1">*</span>
-                <span :class="{
-                  'text-danger': errors.status_id
-                }">
+                <span
+                  :class="{
+                    'text-danger': errors.status_id,
+                  }"
+                >
                   Tình trạng:
                 </span>
               </label>
@@ -44,13 +46,15 @@
                 allow-clear
                 v-model:value="status_id"
                 :class="{
-                  'select-danger': errors.status_id
+                  'select-danger': errors.status_id,
                 }"
               ></a-select>
 
               <div class="w-100"></div>
 
-              <small v-if="errors.status_id" class="text-danger">{{ errors.status_id[0] }}</small>
+              <small v-if="errors.status_id" class="text-danger">{{
+                errors.status_id[0]
+              }}</small>
             </div>
           </div>
 
@@ -58,9 +62,11 @@
             <div class="col-12 col-sm-3 text-start text-sm-end">
               <label>
                 <span class="text-danger me-1">*</span>
-                <span :class="{
-                  'text-danger': errors.username
-                }">
+                <span
+                  :class="{
+                    'text-danger': errors.username,
+                  }"
+                >
                   Tên Tài khoản:
                 </span>
               </label>
@@ -72,13 +78,15 @@
                 allow-clear
                 v-model:value="username"
                 :class="{
-                  'input-danger': errors.username
+                  'input-danger': errors.username,
                 }"
               />
 
               <div class="w-100"></div>
 
-              <small v-if="errors.username" class="text-danger">{{ errors.username[0] }}</small>
+              <small v-if="errors.username" class="text-danger">{{
+                errors.username[0]
+              }}</small>
             </div>
           </div>
 
@@ -86,9 +94,11 @@
             <div class="col-12 col-sm-3 text-start text-sm-end">
               <label>
                 <span class="text-danger me-1">*</span>
-                <span :class="{
-                  'text-danger': errors.name
-                }">
+                <span
+                  :class="{
+                    'text-danger': errors.name,
+                  }"
+                >
                   Họ và Tên:
                 </span>
               </label>
@@ -100,13 +110,15 @@
                 allow-clear
                 v-model:value="name"
                 :class="{
-                  'input-danger': errors.name
+                  'input-danger': errors.name,
                 }"
               />
 
               <div class="w-100"></div>
 
-              <small v-if="errors.name" class="text-danger">{{ errors.name[0] }}</small>
+              <small v-if="errors.name" class="text-danger">{{
+                errors.name[0]
+              }}</small>
             </div>
           </div>
 
@@ -114,9 +126,11 @@
             <div class="col-12 col-sm-3 text-start text-sm-end">
               <label>
                 <span class="text-danger me-1">*</span>
-                <span :class="{
-                  'text-danger': errors.email
-                }">
+                <span
+                  :class="{
+                    'text-danger': errors.email,
+                  }"
+                >
                   Email:
                 </span>
               </label>
@@ -128,13 +142,15 @@
                 allow-clear
                 v-model:value="email"
                 :class="{
-                  'input-danger': errors.email
+                  'input-danger': errors.email,
                 }"
               />
 
               <div class="w-100"></div>
 
-              <small v-if="errors.email" class="text-danger">{{ errors.email[0] }}</small>
+              <small v-if="errors.email" class="text-danger">{{
+                errors.email[0]
+              }}</small>
             </div>
           </div>
 
@@ -142,9 +158,11 @@
             <div class="col-12 col-sm-3 text-start text-sm-end">
               <label>
                 <span class="text-danger me-1">*</span>
-                <span :class="{
-                  'text-danger': errors.email
-                }">
+                <span
+                  :class="{
+                    'text-danger': errors.email,
+                  }"
+                >
                   Phòng ban:
                 </span>
               </label>
@@ -160,13 +178,15 @@
                 allow-clear
                 v-model:value="department_id"
                 :class="{
-                  'select-danger': errors.department_id
+                  'select-danger': errors.department_id,
                 }"
               ></a-select>
 
               <div class="w-100"></div>
 
-              <small v-if="errors.department_id" class="text-danger">{{ errors.department_id[0] }}</small>
+              <small v-if="errors.department_id" class="text-danger">{{
+                errors.department_id[0]
+              }}</small>
             </div>
           </div>
 
@@ -184,9 +204,11 @@
             <div class="col-12 col-sm-3 text-start text-sm-end">
               <label>
                 <span class="text-danger me-1">*</span>
-                <span :class="{
-                  'text-danger': errors.password
-                }">
+                <span
+                  :class="{
+                    'text-danger': errors.password,
+                  }"
+                >
                   Mật khẩu:
                 </span>
               </label>
@@ -198,13 +220,15 @@
                 allow-clear
                 v-model:value="password"
                 :class="{
-                  'input-danger': errors.password
+                  'input-danger': errors.password,
                 }"
               />
-              
+
               <div class="w-100"></div>
 
-              <small v-if="errors.password" class="text-danger">{{ errors.password[0] }}</small>
+              <small v-if="errors.password" class="text-danger">{{
+                errors.password[0]
+              }}</small>
             </div>
           </div>
 
@@ -275,7 +299,8 @@
 <script>
 import { defineComponent, ref, reactive, toRefs } from "vue";
 import { useRouter } from "vue-router";
-import { message } from 'ant-design-vue';
+import { useRoute } from "vue-router";
+import { message } from "ant-design-vue";
 import { useMenu } from "../../../stores/use-menu.js";
 
 export default defineComponent({
@@ -283,6 +308,7 @@ export default defineComponent({
     useMenu().onSelectedKeys(["admin-users"]);
 
     const router = useRouter();
+    const route = useRoute();
     const users_status = ref([]);
     const departments = ref([]);
     const users = reactive({
@@ -295,22 +321,51 @@ export default defineComponent({
       status_id: [],
       change_password: false,
       login_at: "",
-      change_password_at: ""
+      change_password_at: "",
     });
 
     const errors = ref({});
 
+    const getUsersEdit = () => {
+      axios
+        .get(`http://127.0.0.1:8000/api/users/${route.params.id}/edit`)
+        .then((response) => {
+          console.log(response);
+          users.username = response.data.users.username;
+          users.name = response.data.users.name;
+          users.email = response.data.users.email;
+          users.department_id = response.data.users.department_id;
+          users.status_id = response.data.users.status_id;
+
+          response.data.users.login_at
+            ? (users.login_at = response.data.users.login_at)
+            : (users.login_at = "Chưa có lượt Đăng nhập");
+          response.data.users.change_password_at
+            ? (users.change_password_at =
+                response.data.users.change_password_at)
+            : (users.change_password_at = "Chưa có lượt đổi Mật khẩu");
+
+          users_status.value = response.data.users_status;
+          departments.value = response.data.departments;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
     const filterOption = (input, option) => {
       return option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0;
     };
+
+    getUsersEdit();
 
     return {
       users_status,
       departments,
       ...toRefs(users),
       errors,
-      filterOption
-    }
+      filterOption,
+    };
   },
 });
 </script>
