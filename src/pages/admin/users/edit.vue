@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="">
+  <form @submit.prevent="updateUsers()">
     <a-card title="Cập nhật Tài khoản" style="width: 100%">
       <div class="row mb-3">
         <div class="col-12 col-sm-4 mb-3">
@@ -330,7 +330,6 @@ export default defineComponent({
       axios
         .get(`http://127.0.0.1:8000/api/users/${route.params.id}/edit`)
         .then((response) => {
-          console.log(response);
           users.username = response.data.users.username;
           users.name = response.data.users.name;
           users.email = response.data.users.email;
@@ -353,6 +352,16 @@ export default defineComponent({
         });
     };
 
+    const updateUsers = () => {
+      axios.put(`http://127.0.0.1:8000/api/users/${route.params.id}`, users)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        errors.value = error.response.data.errors;
+      });
+    };
+
     const filterOption = (input, option) => {
       return option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0;
     };
@@ -365,6 +374,7 @@ export default defineComponent({
       ...toRefs(users),
       errors,
       filterOption,
+      updateUsers
     };
   },
 });
