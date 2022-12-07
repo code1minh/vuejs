@@ -277,7 +277,7 @@ export default defineComponent({
     const createUsers = () => {
       axios.post("http://127.0.0.1:8000/api/users", users)
       .then((response) => {
-        if(response) {
+        if(response.status == 200) {
           message.success("Tạo mới thành công!");
           router.push({name: "admin-users"});
         }

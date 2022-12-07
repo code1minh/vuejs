@@ -17,6 +17,7 @@
     "ant-design-vue": "^3.2.13",
     "axios": "^1.1.2",
     "bootstrap": "^5.2.2",
+    "dayjs": "^1.11.7",
     "pinia": "^2.0.23",
     "vue": "^3.2.37",
     "vue-router": "^4.1.5"

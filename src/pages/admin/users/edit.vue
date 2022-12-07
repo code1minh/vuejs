@@ -302,6 +302,7 @@ import { useRouter } from "vue-router";
 import { useRoute } from "vue-router";
 import { message } from "ant-design-vue";
 import { useMenu } from "../../../stores/use-menu.js";
+import dayjs from "dayjs";
 
 export default defineComponent({
   setup() {
@@ -337,11 +338,11 @@ export default defineComponent({
           users.status_id = response.data.users.status_id;
 
           response.data.users.login_at
-            ? (users.login_at = response.data.users.login_at)
+            ? (users.login_at = dayjs(response.data.users.login_at).format("DD/MM/YYYY - hh:mm"))
             : (users.login_at = "Chưa có lượt Đăng nhập");
           response.data.users.change_password_at
             ? (users.change_password_at =
-                response.data.users.change_password_at)
+            dayjs(response.data.users.change_password_at).format("DD/MM/YYYY - hh:mm"))
             : (users.change_password_at = "Chưa có lượt đổi Mật khẩu");
 
           users_status.value = response.data.users_status;
@@ -355,7 +356,10 @@ export default defineComponent({
     const updateUsers = () => {
       axios.put(`http://127.0.0.1:8000/api/users/${route.params.id}`, users)
       .then((response) => {
-        console.log(response);
+        if(response.status == 200) {
+          message.success("Cập nhật thành công!");
+          router.push({name: "admin-users"});
+        }
       })
       .catch((error) => {
         errors.value = error.response.data.errors;
