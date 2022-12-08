@@ -338,11 +338,11 @@ export default defineComponent({
           users.status_id = response.data.users.status_id;
 
           response.data.users.login_at
-            ? (users.login_at = dayjs(response.data.users.login_at).format("DD/MM/YYYY - hh:mm"))
+            ? (users.login_at = dayjs(response.data.users.login_at).format('DD/MM/YYYY - HH:mm'))
             : (users.login_at = "Chưa có lượt Đăng nhập");
           response.data.users.change_password_at
             ? (users.change_password_at =
-            dayjs(response.data.users.change_password_at).format("DD/MM/YYYY - hh:mm"))
+            dayjs(response.data.users.change_password_at).format('DD/MM/YYYY - HH:mm'))
             : (users.change_password_at = "Chưa có lượt đổi Mật khẩu");
 
           users_status.value = response.data.users_status;
@@ -354,16 +354,17 @@ export default defineComponent({
     };
 
     const updateUsers = () => {
-      axios.put(`http://127.0.0.1:8000/api/users/${route.params.id}`, users)
-      .then((response) => {
-        if(response.status == 200) {
-          message.success("Cập nhật thành công!");
-          router.push({name: "admin-users"});
-        }
-      })
-      .catch((error) => {
-        errors.value = error.response.data.errors;
-      });
+      axios
+        .put(`http://127.0.0.1:8000/api/users/${route.params.id}`, users)
+        .then((response) => {
+          if (response.status == 200) {
+            message.success("Cập nhật thành công!");
+            router.push({ name: "admin-users" });
+          }
+        })
+        .catch((error) => {
+          errors.value = error.response.data.errors;
+        });
     };
 
     const filterOption = (input, option) => {
@@ -378,7 +379,7 @@ export default defineComponent({
       ...toRefs(users),
       errors,
       filterOption,
-      updateUsers
+      updateUsers,
     };
   },
 });
